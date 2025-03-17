@@ -24,14 +24,20 @@ body {
     background-color: #FCE3C7;
 }
 
-.header {
-    background-color: F5C28E;
-    padding : 20px;
+.container-fluid {
+    background-color: #F5C28E;
+ 
     text-align: center;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.navbar-nav {
+    text-align: center;
+    display: flex;
+    margin-left:1100px;
+    align-items: center;
 }
 
 
