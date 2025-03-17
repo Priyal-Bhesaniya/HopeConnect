@@ -18,7 +18,7 @@ namespace HopeConnect.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Aboutus()
         {
             return View();
         }
