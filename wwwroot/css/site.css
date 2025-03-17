@@ -24,5 +24,14 @@ body {
     background-color: #FCE3C7;
 }
 
+.header {
+    background-color: F5C28E;
+    padding : 20px;
+    text-align: center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
 
 
