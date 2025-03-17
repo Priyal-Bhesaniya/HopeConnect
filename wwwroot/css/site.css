@@ -24,20 +24,80 @@ body {
     background-color: #FCE3C7;
 }
 
-.container-fluid {
-    background-color: #F5C28E;
- 
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+
+header {
+    background-color: #F5C28E; /* White background */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    
+}
+
+
+
+
+.navbar {
+    padding: 10px 20px;
+    background-color : #F5C28E;
+    display:flex;
+
 }
 
 .navbar-nav {
+    margin-left: auto; /* Push navbar items to the right */
+}
+
+.navbar-nav .nav-link {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    margin-right: 15px;
+   
+    transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+    position: relative;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: #ff6a00 !important; /* orange color on hover */
+    }
+
+    .navbar-nav .nav-link::after {
+        content: "";
+        display: block;
+        width: 0%;
+        height: 2px;
+        background-color: #ff6a00; /* Blue underline */
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: width 0.3s ease-in-out;
+    }
+
+    .navbar-nav .nav-link:hover::after {
+        width: 100%; /* Expand underline */
+    }
+
+    /*for button*/
+
+.btn-login {
+    background-color: #E38B29;
+    padding: 10px 10px ;
+
+    border-radius: 10px;
+    color: black !important;
+    font-weight: bold;
     text-align: center;
-    display: flex;
-    margin-left:1100px;
-    align-items: center;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Add extra padding around the button */
+.nav-item.ms-3 {
+    padding-top: 5px; /* Space above */
+    padding-bottom: 5px; /* Space below */
 }
 
 
+/*my navbar is completed */
+
+
+/* =================================================== */
