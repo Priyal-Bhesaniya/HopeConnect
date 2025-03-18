@@ -281,7 +281,7 @@ ul.navbar-nav{
     color: black;
     position: relative; /* Removed absolute to prevent misalignment */
     left: 50px; /* Adjusted positioning */
-    margin-bottom: 10px;
+   
 }
 
 /* Description */
@@ -315,3 +315,19 @@ ul.navbar-nav{
 
 
 
+
+@media (min-width: 600px) {
+    .hope-footerhtml {
+        font-size: 16px;
+    }
+
+   
+}
+
+.social-icons{
+    margin-right:100px;
+    margin-top:200px;
+    justify-content:space-between
+   
+
+}
