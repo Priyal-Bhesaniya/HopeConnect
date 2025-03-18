@@ -6,3 +6,67 @@
 }
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Login.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light border-bottom shadow-sm">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="~/images/guest/logo-removebg-preview.png"
+                             class="img-fluid"
+                             alt="Logo"
+                             width="150"
+                             style="margin-right:1700px" />
+                    </a>
+
+                </div>
+            </nav>
+        </header>
+
+         
+
+        <!-- Signup Form -->
+        <div class="auth-container">
+            <div class="auth-box1">
+                <h2>Create an Account</h2>
+
+                <div class="input-group">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="User Icon" class="icon">
+                    <input type="text" placeholder="Name">
+                </div>
+
+                <div class="input-group">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email Icon" class="icon">
+                    <input type="email" placeholder="Email">
+                </div>
+
+                <div class="input-group">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone Icon" class="icon">
+                    <input type="text" placeholder="Mobile No">
+                </div>
+
+                <div class="input-group">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" alt="Lock Icon" class="icon">
+                    <input type="password" placeholder="Password">
+                </div>
+
+                <button class="btn">Create Account</button>
+
+                <p class="switch-auth">Have an organization? <a href="#">Create One</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
