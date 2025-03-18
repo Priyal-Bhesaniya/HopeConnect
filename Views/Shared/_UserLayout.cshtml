@@ -33,16 +33,16 @@
                         <a class="nav-link @(ViewData["ActivePage"] == "AllPost" ? "active" : "")" asp-controller="User" asp-action="User">All Post</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @(ViewData["ActivePage"] == "Network" ? "active" : "")" asp-controller="User" asp-action="Network">Network</a>
+                        <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Network" ? "active-link" : "")"asp-controller="Network" asp-action="Index">Network</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @(ViewData["ActivePage"] == "CreatePost" ? "active" : "")" asp-controller="User" asp-action="CreatePost">Post</a>
+                        <a class="nav-link @(ViewData["ActivePage"] == "CreatePost" ? "active" : "")" asp-controller="CreatePost" asp-action="Index">Post</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @(ViewData["ActivePage"] == "Notifications" ? "active" : "")" asp-controller="User" asp-action="Notifications">Notifications</a>
+                        <a class="nav-link @(ViewData["ActivePage"] == "Notifications" ? "active" : "")" asp-controller="Notifications" asp-action="Index">Notifications</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @(ViewData["ActivePage"] == "Profile" ? "active" : "")" asp-controller="User" asp-action="Profile">User Profile</a>
+                        <a class="nav-link @(ViewData["ActivePage"] == "Profile" ? "active" : "")" asp-controller="Profile" asp-action="Index">User Profile</a>
                     </li>
                 </ul>
 

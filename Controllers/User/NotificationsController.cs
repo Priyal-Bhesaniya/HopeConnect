@@ -4,10 +4,10 @@ namespace HopeConnect.Controllers.User
 {
     public class NotificationsController : Controller
     {
-        public IActionResult Notifications()
+        public IActionResult Index()
         {
             ViewData["ActivePage"] = "Notifications";
-            return View();
+            return View("~/Views/User/Notifications.cshtml");
         }
     }
 }
