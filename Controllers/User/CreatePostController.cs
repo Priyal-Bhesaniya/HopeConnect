@@ -4,8 +4,9 @@ namespace HopeConnect.Controllers.User
 {
     public class CreatePostController : Controller
     {
-        public IActionResult Index()
+        public IActionResult CreatePost()
         {
+            ViewData["ActivePage"] = "CreatePost";
             return View();
         }
     }

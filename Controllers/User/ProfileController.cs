@@ -4,8 +4,9 @@ namespace HopeConnect.Controllers.User
 {
     public class ProfileController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Profile()
         {
+            ViewData["ActivePage"] = "Profile";
             return View();
         }
     }
