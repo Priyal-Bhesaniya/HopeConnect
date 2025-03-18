@@ -2,4 +2,64 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = null;
 }
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="~/css/Login.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Login Form -->
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light border-bottom shadow-sm">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="~/images/guest/logo-removebg-preview.png"
+                             class="img-fluid"
+                             alt="Logo"
+                             width="150"
+                             style="margin-right:1700px"/>
+                    </a>
+                 
+                </div>
+            </nav>
+        </header>
+
+
+
+        <div class="auth-container">
+            <div class="auth-box">
+                <h2>Login Form</h2>
+
+                <div class="input-group">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="User Icon" class="icon">
+                    <input type="text" placeholder="Name">
+                </div>
+
+            
+
+                <div class="input-group">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" alt="Lock Icon" class="icon">
+                    <input type="password" placeholder="Password">
+                </div>
+
+                <button class="btn">Login</button>
+
+                <p class="switch-auth">Not a member?  <a asp-area="" asp-controller="Home" asp-action="Register"><strong>Signup Now</strong></a></p>
+            </div>
+        </div>
+
+        
+    </div>
+</body>
+</html>
