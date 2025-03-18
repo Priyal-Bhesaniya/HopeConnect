@@ -4,12 +4,11 @@ namespace HopeConnect.Controllers.User
 {
     public class UserController : Controller
     {
-        public IActionResult User()
+        public IActionResult Network()
         {
-            ViewData["ActivePage"] = "AllPost";
+            ViewData["ActivePage"] = "Network";
             return View();
         }
-
 
 
 

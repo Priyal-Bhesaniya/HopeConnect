@@ -4,7 +4,7 @@ namespace HopeConnect.Controllers.User
 {
     public class NetworkController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Network()
         {
             return View();
         }
