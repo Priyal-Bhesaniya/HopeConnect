@@ -44,6 +44,9 @@ header {
     width: 100%;
 }
 
+.navbar-light .navbar-nav .nav-link {
+    color: #212529;
+}
 /* Sticky Navbar */
 .navbar {
     position: fixed; /* Change to fixed to ensure it stays at the top */
