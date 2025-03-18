@@ -1,0 +1,101 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HopeConnect</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HopeConnect.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<body>
+    <!-- User Panel Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="User" asp-action="UserDashboard">
+                    <img src="~/images/guest/logo-removebg-preview.png" class="img-fluid" alt="Logo" width="150" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="User" asp-action="User">All Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="User" asp-action="Network">Network</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="User" asp-action="CreatePost">Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="User" asp-action="Notifications">Notifications</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="User" asp-action="Profile">User Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" asp-controller="Account" asp-action="Logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        @RenderBody()  <!-- This will dynamically load each user-related page -->
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="hope-footer">
+
+        <div class="hope-connect">
+            <div class="content">
+                <div>
+                    <div style="float: left;">
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                            <img src="~/images/guest/logo-removebg-preview.png" class="img-fluid" alt="Logo" width="150" />
+                        </a>
+                    </div>
+                    <div style="float:right">
+                        <strong><h2>Hope Connect</h2></strong>
+                        <p>
+                            Helps report and track homeless children and beggars, <br />
+                            aiding their rescue through photos, location detection, <br />
+                            and welfare collaboration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href="https://instagram.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://wa.me/your-number" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/whatsapp.png" alt="WhatsApp">
+                </a>
+                <a href="https://youtube.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/youtube.png" alt="YouTube">
+                </a>
+                <a href="https://facebook.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/facebook-new.png" alt="Facebook">
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
