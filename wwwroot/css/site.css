@@ -1,88 +1,97 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-    font-family: Arial, sans-serif;
+/* Reset default margins and paddings */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevents horizontal scroll */
+    font-family: Arial, sans-serif;
     background-color: #FCE3C7;
 }
 
+/* Set font size for different screen sizes */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
 
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
 
+/* Button focus styles */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Header */
 header {
-    background-color: #F5C28E; /* White background */
+    background-color: #F5C28E;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    
+    width: 100%;
 }
 
-
-
-
+/* Navbar */
 .navbar {
-    padding: 10px 20px;
-    background-color : #F5C28E;
-    display:flex;
 
+    background-color: #F5C28E;
+    display: flex;
+    width: 100%;
 }
+
 
 .navbar-nav {
     margin-left: auto; /* Push navbar items to the right */
+    background-color: #F5C28E;
 }
 
-.navbar-nav .nav-link {
-    font-size: 16px;
-    font-weight: bold;
-    color: black;
-    margin-right: 15px;
-   
-    transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
-    position: relative;
-}
-
-    .navbar-nav .nav-link:hover {
-        color: #ff6a00 !important; /* orange color on hover */
+    .navbar-nav .nav-link {
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        margin-right: 15px;
+        transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+        position: relative;
     }
 
-    .navbar-nav .nav-link::after {
-        content: "";
-        display: block;
-        width: 0%;
-        height: 2px;
-        background-color: #ff6a00; /* Blue underline */
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        transition: width 0.3s ease-in-out;
-    }
+        .navbar-nav .nav-link:hover {
+            color: #ff6a00 !important; /* Orange color on hover */
+        }
 
-    .navbar-nav .nav-link:hover::after {
-        width: 100%; /* Expand underline */
-    }
+        .navbar-nav .nav-link::after {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 1px;
+            background-color: #ff6a00;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease-in-out;
+        }
 
-    /*for button*/
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
 
+/* Button */
 .btn-login {
     background-color: #E38B29;
-    padding: 10px 10px ;
-
+    padding: 10px 15px;
     border-radius: 10px;
     color: black !important;
     font-weight: bold;
@@ -90,14 +99,68 @@ header {
     transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-/* Add extra padding around the button */
 .nav-item.ms-3 {
-    padding-top: 5px; /* Space above */
-    padding-bottom: 5px; /* Space below */
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 30px;
+    width: 100%;
+}
+
+    .hero img {
+        width: 300px;
+        border-radius: 10px;
+        display: flex;
+        margin: 0 auto;
+    }
+
+/* Container Adjustments */
+.container {
+    max-width: 100%;
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Full-width Section */
+.section {
+    width: 100%;
+    background-color: #F5C28E;
+    text-align: center;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+/* Container-fluid Fix */
+.container-fluid {
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background-color: #F5C28E;
+    text-align: center;
+    padding: 20px 0;
+    box-sizing: border-box;
+    height:90px;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    background-color: #F5C28E;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
 }
 
 
-/*my navbar is completed */
-
-
-/* =================================================== */
+ul.navbar-nav{
+    margin-right : 90px;
+}
