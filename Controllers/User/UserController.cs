@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace HopeConnect.Controllers
+namespace HopeConnect.Controllers.User
 {
     public class UserController : Controller
     {
@@ -10,8 +10,8 @@ namespace HopeConnect.Controllers
             return View();
         }
 
-      
-        
+
+
 
     }
 }
