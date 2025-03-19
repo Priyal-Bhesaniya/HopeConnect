@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+   
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Posts</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/User.css">
+</head>
+<body>
+
+    <!-- Middle Content (User Posts Section) -->
+    <div class="container">
+        <!-- User Post Section -->
+        <div class="user-posts">
+            <!-- Single Post -->
+            <div class="post-card">
+                <div class="post-header">
+                    <h5>Priyal Bhesaniya</h5>
+                    <i class="fas fa-external-link-alt"></i> <!-- Icon for external post link -->
+                </div>
+                <div class="post-content">
+                    <p>I found two child beggars at Raiya Chowk, struggling without food or shelter. They need urgent rescue and support from welfare organizations. Please take immediate action to help them find a safe place.</p>
+                    <img src="~/Images/guest/child2.png" alt="Child Beggars">
+                </div>
+                <div class="post-footer">
+                    <span>📍 Location</span>
+                </div>
+            </div>
+
+            <!-- Another Post -->
+            <div class="post-card">
+                <div class="post-header">
+                    <h5>Madhvi Sanghani</h5>
+                </div>
+                <div class="post-content">
+                    <p>I found garbage floating in the water, making it look dirty and unsafe. It harms the environment and marine life, showing the need for proper waste disposal.</p>
+                    <img src="~/Images/guest/child.png" alt="Pollution Image">
+                </div>
+                <div class="post-footer">
+                    <span>📍 Location</span>
+                </div>
+            </div>
+
+
+            <div class="post-card">
+                <div class="post-header">
+                    <h5>Madhvi Sanghani</h5>
+                </div>
+                <div class="post-content">
+                    <p>I found garbage floating in the water, making it look dirty and unsafe. It harms the environment and marine life, showing the need for proper waste disposal.</p>
+                    <img src="~/Images/guest/child.png" alt="Pollution Image">
+                </div>
+                <div class="post-footer">
+                    <span>📍 Location</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

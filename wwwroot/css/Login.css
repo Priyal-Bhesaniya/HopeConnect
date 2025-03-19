@@ -1,0 +1,109 @@
+﻿/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFE4C4; /* Light beige */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+/* Header with Only Logo */
+.logo-header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.logo img {
+    width: 50px;
+}
+
+/* Auth Container */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Auth Box */
+.auth-box {
+    background-color: #FCE3C7; /* Match your UI */
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height:300px;
+}
+
+
+.auth-box1 {
+    background-color: #FCE3C7; /* Match your UI */
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 450px;
+}
+/* Heading */
+.auth-box h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-group {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+    .input-group .icon {
+        width: 20px;
+        margin-right: 10px;
+    }
+
+    .input-group input {
+        border: none;
+        outline: none;
+        width: 100%;
+        font-size: 14px;
+    }
+
+/* Button */
+.btn {
+    background-color: #FF914D;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+    .btn:hover {
+        background-color: #FF6A00;
+    }
+
+/* Switch Auth */
+.switch-auth {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+    .switch-auth a {
+        color: #FF6A00;
+        text-decoration: none;
+        font-weight: bold;
+    }

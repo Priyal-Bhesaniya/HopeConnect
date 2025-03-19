@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,49 +17,51 @@
 
 </head>
 <body>
+    <!-- User Panel Navbar -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light  border-bottom shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <a class="navbar-brand" asp-controller="User" asp-action="UserDashboard">
                     <img src="~/images/guest/logo-removebg-preview.png" class="img-fluid" alt="Logo" width="150" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><strong>Home</strong></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Aboutus"><strong>About us</strong></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contactus"><strong>Contact us</strong></a>
-                        </li>
-                        <li class="nav-item ms-3">
-                            <a class="btn btn-login text-dark" asp-area="" asp-controller="Home" asp-action="Login"><strong>Login</strong></a>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewData["ActivePage"] == "AllPost" ? "active" : "")" asp-controller="User" asp-action="User">All Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Network" ? "active-link" : "")"asp-controller="Network" asp-action="Index">Network</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewData["ActivePage"] == "CreatePost" ? "active" : "")" asp-controller="CreatePost" asp-action="Index">Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewData["ActivePage"] == "Notifications" ? "active" : "")" asp-controller="Notifications" asp-action="Index">Notifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewData["ActivePage"] == "Profile" ? "active" : "")" asp-controller="Profile" asp-action="Index">User Profile</a>
+                    </li>
+                </ul>
+
             </div>
         </nav>
     </header>
 
-    <div class="container mt-4">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <!-- Main Content -->
+    <div class="container">
+        @RenderBody()  <!-- This will dynamically load each user-related page -->
     </div>
 
-    <br />
+    <!-- Footer -->
 
     <footer class="hope-footer">
-       
+
         <div class="hope-connect">
             <div class="content">
-               <div>
+                <div>
                     <div style="float: left;">
                         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                             <img src="~/images/guest/logo-removebg-preview.png" class="img-fluid" alt="Logo" width="150" />
@@ -69,7 +75,7 @@
                             and welfare collaboration.
                         </p>
                     </div>
-               </div>
+                </div>
             </div>
             <div class="social-icons">
                 <a href="https://instagram.com" target="_blank">
@@ -87,12 +93,5 @@
             </div>
         </div>
     </footer>
-
-
-    <!-- Scripts -->
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
