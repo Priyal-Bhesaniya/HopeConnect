@@ -3,3 +3,165 @@
 *@
 @{
 }
+
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #FCE0C7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #FDD9B5;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+            .form-group label {
+                width: 100%;
+                text-align: left;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 48%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                font-size: 14px;
+            }
+
+            .form-group textarea {
+                width: 100%;
+                height: 100px;
+                resize: none;
+            }
+
+        .submit-btn {
+            padding: 12px 30px;
+            background-color: #F4A460;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .submit-btn:hover {
+                background-color: #E9967A;
+            }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+            .contact-item img {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 10px;
+            }
+
+            .contact-item p {
+                margin: 0;
+                font-size: 14px;
+            }
+
+        /* Responsive Design */
+        /* media (max-width: 768px) { */
+        /*     .form-group input */
+
+        /* { */
+        /*     width: 100%; */
+        /*     margin-bottom: 10px; */
+        /* } */
+
+        /* .contact-info { */
+        /*     flex-direction: column; */
+        /*     gap: 20px; */
+        /* } */
+
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>Any questions or remarks? just write us a message!</p>
+
+        <div class="form-container">
+            <form>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email" required />
+                    <input type="text" id="name" name="name" placeholder="Name" required />
+                </div>
+
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Message" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <img src="~/Images/icons/phone.png" alt="Phone" />
+                <p>+91 90232 44500<br />+91 82008 60989</p>
+            </div>
+            <div class="contact-item">
+                <img src="~/Images/icons/email.png" alt="Email" />
+                <p>msanghani046@rku.ac.in</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

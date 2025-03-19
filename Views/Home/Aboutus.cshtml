@@ -1,63 +1,164 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "About Us";
 }
 
-    <section style="margin-top: 50px;">
-        <div style="float: left;">
-            <h2>HOPE</h2>
-            <h2 style="margin-left: 30px;">CONNECT</h2>
-            <p style="font-size: 20px;">
-                Connect with those who care.<br />
-                Share your photo and let us help you find the<br />
-                right support and resources in your community.<br />
-                We're here to bridge the gap and ensure everyone<br />
-                gets the assistance they need.
-            </p>
-        </div>
-        <div style="float: right;">
-            <table>
-                <tr>
-                    <td>
-                        <img src="~/Images/aboutus/child.png" />
-                    </td>
-                    <td>
-                        <img src="~/Images/aboutus/river.png" />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <img src="~/Images/aboutus/animal.png"  style="margin-left: 100px;"/>
-                    </td>
-                </tr>
-            </table>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* body { */
+        /*     margin: 0; */
+        /*     padding: 0; */
+        /*     font-family: Arial, sans-serif; */
+        /* } */
+
+        /* section { */
+        /*     margin: 50px auto; */
+        /*     max-width: 1200px; */
+        /*     padding: 20px; */
+        /*     box-sizing: border-box; */
+        /* } */
+
+        /* .section-container { */
+        /*     display: flex; */
+        /*     flex-wrap: wrap; */
+        /*     justify-content: space-between; */
+        /*     align-items: center; */
+        /*     gap: 20px; */
+        /* } */
+
+        /* .text-container { */
+        /*     width: 48%; */
+        /*     font-size: 20px; */
+        /* } */
+
+        /*     .text-container h2 { */
+        /*         margin: 0; */
+        /*     } */
+
+        /*     .text-container p { */
+        /*         line-height: 1.6; */
+        /*     } */
+
+        /* .image-container { */
+        /*     width: 48%; */
+        /*     text-align: center; */
+        /* } */
+
+        /*     .image-container img { */
+        /*         width: 100%; */
+        /*         height: auto; */
+        /*         max-width: 300px; */
+        /*     } */
+
+        /* table { */
+        /*     width: 100%; */
+        /*     margin-top: 20px; */
+        /* } */
+
+        /*     table td { */
+        /*         text-align: center; */
+        /*         padding: 10px; */
+        /*     } */
+
+        /* /* Responsive Design */ 
+        /* media (max-width: 768px) { */
+        /*     .text-container, .image-container */
+        /*     { */
+        /*         width: 100%; */
+        /*         text-align: center; */
+        /*     } */
+
+        /*     .section-container { */
+        /*         flex-direction: column; */
+        /*         gap: 30px; */
+        /*     } */
+
+        /*     table { */
+        /*         width: 100%; */
+        /*     } */
+
+        /*     table td { */
+        /*         display: block; */
+        /*         padding: 10px 0; */
+        /*     } */
+
+        /*     table img { */
+        /*         width: 80%; */
+        /*         margin: 0 auto; */
+        /*     } */
+        /* } */
+    </style>
+</head>
+<body>
+
+    <!-- Section 1 -->
+    <section>
+        <div class="section-container">
+            <div class="text-container">
+                <h2>HOPE</h2>
+                <h2 style="margin-left: 30px;">CONNECT</h2>
+                <p>
+                    Connect with those who care.<br />
+                    Share your photo and let us help you find the<br />
+                    right support and resources in your community.<br />
+                    We're here to bridge the gap and ensure everyone<br />
+                    gets the assistance they need.
+                </p>
+            </div>
+            <div class="image-container">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="~/Images/aboutus/child.png" alt="Child">
+                        </td>
+                        <td>
+                            <img src="~/Images/aboutus/river.png" alt="River">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <img src="~/Images/aboutus/animal.png" style="margin-top: 20px;" alt="Animal">
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </section>
-    <br />
-<section style="margin-top: 310px;">
-    <div style="float: left;">
-        <img src="~/Images/guest/child2.png">
-    </div>
-    <div style="float: right;">
-            <p style="font-size: 20px; margin-top: 50px;">
-                We connect child beggars, homeless people and <br />
-                orphans to their respective help centers like NGOs, <br />
-                trusts and orphanages online, so organizations can take  <br />
-                actions on it.
-            </p>
-    </div>
-</section>
-<br />
-<section style="margin-top: 310px; >
-    <div style="float: left;">
-        <p style="font-size: 20px; margin-top: 50px;">
-            We share photos of injured animals and birds to the <br />
-            veterinary hospitals with location via our website, <br />
-            so they can take actions at time and save the birds <br />
-            and animals .
-        </p>
-    </div>
-    <div style="float: right;">
-        <img src="~/Images/guest/bird.png" />
-    </div>
-</section>
- 
+
+    <!-- Section 2 -->
+    <section>
+        <div class="section-container">
+            <div class="image-container">
+                <img src="~/Images/guest/child2.png" alt="Child 2">
+            </div>
+            <div class="text-container">
+                <p>
+                    We connect child beggars, homeless people and <br />
+                    orphans to their respective help centers like NGOs, <br />
+                    trusts and orphanages online, so organizations can take <br />
+                    actions on it.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section>
+        <div class="section-container">
+            <div class="text-container">
+                <p>
+                    We share photos of injured animals and birds to the <br />
+                    veterinary hospitals with location via our website, <br />
+                    so they can take actions on time and save the birds <br />
+                    and animals.
+                </p>
+            </div>
+            <div class="image-container">
+                <img src="~/Images/guest/bird.png" alt="Bird">
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
