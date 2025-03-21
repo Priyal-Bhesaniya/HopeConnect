@@ -4,9 +4,10 @@ namespace HopeConnect.Controllers.Organization
 {
     public class ORegisterController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ORegister()
         {
-            return View();
+            ViewData["ActivePage"] = "ORegister";
+            return View("~/Views/Organization/ORegister.cshtml");
         }
     }
 }
