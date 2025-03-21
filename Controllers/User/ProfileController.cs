@@ -7,7 +7,7 @@ namespace HopeConnect.Controllers.User
         public IActionResult Profile()
         {
             ViewData["ActivePage"] = "Profile";
-            return View();
+            return View("~/Views/User/Profile.cshtml");
         }
     }
 }
