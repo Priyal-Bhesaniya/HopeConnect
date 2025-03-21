@@ -1,0 +1,109 @@
+﻿/* Container Styling */
+.container {
+    padding: 15px;
+    border-radius: 5px;
+    width: 900px;
+    margin-top: 60px;
+    margin-bottom: 50px; /* Centered horizontally */
+}
+
+/* Header */
+.header {
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #f5c79e;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Textarea */
+#txtThoughts {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Action Panel */
+.action-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #f5c79e;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Upload and Submit Buttons */
+.btn-upload,
+.btn-submit {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Select Dropdown */
+#ddlOrganization {
+    border: none;
+    background: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Organization List Buttons */
+#organizationList {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.org-btn {
+    background-color: #f5c79e;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+    .org-btn:hover {
+        background-color: #f5a87e;
+    }
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .action-panel {
+        flex-direction: column;
+        gap: 5px;
+        align-items: stretch;
+    }
+
+    .container {
+        width: 95%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .btn-upload,
+    #ddlOrganization,
+    .btn-submit {
+        width: 100%;
+        text-align: center;
+    }
+
+    #organizationList {
+        flex-direction: column;
+    }
+}

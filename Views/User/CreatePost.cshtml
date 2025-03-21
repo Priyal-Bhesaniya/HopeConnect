@@ -1,8 +1,42 @@
 ﻿@{
     Layout = "~/Views/Shared/_UserLayout.cshtml";
+    ViewData["Title"] = "Post to Organization";
 }
 
-<div class="container">
-    <h2>Network Page</h2>
-    <p>Welcome to the Network Page.</p>
-</div>
+@{
+    ViewData["Title"] = "Post to Organization";
+}
+
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="~/css/post.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+    <div class="container">
+        <div class="header">Priyal bhesaniya</div>
+
+        <textarea id="txtThoughts" rows="5" placeholder="Share your thoughts .............."></textarea>
+
+        <div class="action-panel">
+            <input type="file" id="fileInput" />
+
+
+            <select id="ddlOrganization">
+                <option>🏢 Choose Organization</option>
+                <option value="1">Maa Gauri Gaushala</option>
+                <option value="2">Shree Kranti Manav Seva Trust</option>
+                <option value="3">Navjeevan Trust</option>
+            </select>
+
+            <button class="btn-submit">
+                ➤
+            </button>
+        </div>
+    </div>
+    </body>
+</html>
+
