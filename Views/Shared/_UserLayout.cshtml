@@ -11,7 +11,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/HopeConnect.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -24,31 +24,40 @@
                 <a class="navbar-brand" asp-controller="User" asp-action="UserDashboard">
                     <img src="~/images/guest/logo-removebg-preview.png" class="img-fluid" alt="Logo" width="150" />
                 </a>
+                <!-- Fixed Navbar Toggle Button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewData["ActivePage"] == "AllPost" ? "active" : "")" asp-controller="User" asp-action="User">All Post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Network" ? "active-link" : "")"asp-controller="Network" asp-action="Index">Network</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewData["ActivePage"] == "CreatePost" ? "active" : "")" asp-controller="CreatePost" asp-action="Index">Post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewData["ActivePage"] == "Notifications" ? "active" : "")" asp-controller="Notifications" asp-action="Index">Notifications</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewData["ActivePage"] == "Profile" ? "active" : "")" asp-controller="Profile" asp-action="Index">User Profile</a>
-                    </li>
-                </ul>
 
+                <!-- Navbar Links Wrapped Inside Collapse -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewData["ActivePage"] == "AllPost" ? "active" : "")" asp-controller="User" asp-action="User">All Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Network" ? "active-link" : "")" asp-controller="Network" asp-action="Index">Network</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewData["ActivePage"] == "CreatePost" ? "active" : "")" asp-controller="CreatePost" asp-action="Index">Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewData["ActivePage"] == "Notifications" ? "active" : "")" asp-controller="Notifications" asp-action="Index">Notifications</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewData["ActivePage"] == "Profile" ? "active" : "")" asp-controller="Profile" asp-action="Profile">User Profile</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
+
+    <!-- Include Bootstrap JavaScript (Fixed) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Main Content -->
     <div class="container">
