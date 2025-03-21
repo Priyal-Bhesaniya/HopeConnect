@@ -4,9 +4,10 @@ namespace HopeConnect.Controllers.Organization
 {
     public class OallPostController : Controller
     {
-        public IActionResult Index()
+        public IActionResult OallPost()
         {
-            return View();
+            ViewData["ActivePage"] = "OallPost";
+            return View("~/Views/Organization/OallPost.cshtml");
         }
     }
 }
