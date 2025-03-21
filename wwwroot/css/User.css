@@ -2,7 +2,6 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #FCE3C7;
-    
     margin: 0;
     padding: 0;
 }
@@ -12,6 +11,9 @@ body {
     max-width: 90%;
     margin: 30px auto;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Post Cards */
@@ -19,11 +21,9 @@ body {
     background: #fff;
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left : 30px;
-    margin-top:90px;
-  
+    width: 60%; /* Adjust width for better alignment */
+    margin: 20px 0; /* Centering horizontally */
 }
 
 /* Post Header */
@@ -33,7 +33,6 @@ body {
     align-items: center;
     font-weight: bold;
     color: #333;
-    margin-bottom: 8px;
     background-color: #FF914D;
     border-radius: 5px;
     padding: 10px;
@@ -52,7 +51,7 @@ body {
 }
 
 .post-content img {
-    width: 30%;
+    width: 100%;
     height: auto;
     border-radius: 5px;
     margin-top: 10px;
@@ -65,7 +64,7 @@ body {
     color: #666;
     background-color: #FF914D;
     border-radius: 5px;
-    padding:10px;
+    padding: 10px;
 }
 
 /* Responsive Design */
@@ -76,34 +75,60 @@ body {
     }
 
     .post-card {
+        width: 90%; /* Adjust width for smaller screens */
         padding: 10px;
     }
 
     .post-content p {
         font-size: 14px;
     }
+
+    .navbar-toggler {
+        border: none;
+        background-color: transparent;
+    }
+
+        .navbar-toggler:focus,
+        .navbar-toggler:active {
+            outline: none;
+            box-shadow: none;
+        }
+
+    .navbar-collapse {
+        background-color: #FF914D;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+        .navbar-nav .nav-item {
+            padding: 10px 0;
+        }
 }
 
-/* for under line for active page */
-
+/* Navbar underline effect */
 .navbar-nav .nav-link {
     position: relative;
-    color: #333; /* Normal text color */
+    color: #333;
     font-weight: 500;
     transition: color 0.3s ease-in-out;
 }
 
     .navbar-nav .nav-link.active {
-        color: #FF914D; /* Highlight active link color */
+        color: #FF914D;
         font-weight: bold;
     }
 
         .navbar-nav .nav-link.active::after {
             content: "";
-           
-          
-            bottom: -5px; /* Position of underline */
+            display: block;
             width: 100%;
             height: 3px;
-            background-color: #FF914D; /* Underline color */
+            background-color: #FF914D;
         }
+
+
+
