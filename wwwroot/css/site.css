@@ -210,7 +210,7 @@ ul.navbar-nav{
 
 /* Hope Connect Card */
 .hope-connect {
-    width: 90%;
+  
     background: linear-gradient(to right, rgba(252, 227, 199, 0.9), rgba(245, 194, 142, 0.9)), url('bg-image.jpg'); /* Background image with gradient overlay */
     background-size: cover;
     background-position: center;
@@ -229,8 +229,9 @@ ul.navbar-nav{
 
 /* Hope Connect Card in Footer */
 .hope-connect {
-    width: 100vw; /* Full viewport width */
-    width: 100%;
+
+    /* Full viewport width */
+    width: 2200px ;
     background: linear-gradient(to right, rgba(252, 227, 199, 0.9), rgba(245, 194, 142, 0.9)), url('../Images/footer/footerImage.png'); /* Adjust path */
     background-size: cover;
     background-position: center;
