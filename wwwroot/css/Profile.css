@@ -32,16 +32,6 @@ body {
 }
 
 /* Auth Box */
-.auth-box {
-    background-color: #FCE3C7; /* Match your UI */
-    padding: 30px;
-    border-radius: 10px;
-    width: 400px;
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    height: 370px;
-}
-
 
 .auth-box1 {
     background-color: #FCE3C7; /* Match your UI */
