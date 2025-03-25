@@ -3,28 +3,26 @@
     ViewData["Title"] = "Post to Organization";
 }
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Signup</title>
-    <link rel="stylesheet" href="~/css/Profile.css">
-    <link rel="stylesheet" href="~/css/Courosole.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>@ViewData["Title"]</title>
 
-  
+    <link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true">
+   
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-  
-        <div class="auth-container">
-            <div class="auth-box1">
-              <h3>User Profile</h3>
+    <!-- User Profile Section -->
+    <div class="auth-container">
+        <div class="auth-box1">
+            <h3>User Profile</h3>
 
+            <form method="post">
                 <div class="input-group">
                     <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="User Icon" class="icon">
                     <input type="text" name="Name" placeholder="Name" required>
@@ -46,38 +44,43 @@
                 </div>
 
                 <button type="submit" class="btn">Edit Profile</button>
-
-            </div>
-        </div>
-
-    <div class="container">
-        <h2>Your Posts</h2>
-        <div class="carousel">
-            <button class="prev"><i class="fas fa-chevron-left"></i></button>
-            <div class="carousel-content">
-                <div class="slide active">
-                    <img src="~/Images/guest/child.png" alt="Image 1">
-                    <p>We rescue child beggars by reporting, tracking, and connecting them with welfare organizations for rehabilitation.</p>
-                </div>
-                <div class="slide">
-                    <img src="~/Images/guest/bird.png" alt="Image 2">
-                    <p>Providing food and shelter to homeless children through our support programs.</p>
-                </div>
-                <div class="slide">
-                    <img src="~/Images/guest/child2.png" alt="Image 3">
-                    <p>Collaborating with NGOs to ensure child education and a better future.</p>
-                </div>
-            </div>
-            <button class="next"><i class="fas fa-chevron-right"></i></button>
-        </div>
-        <div class="indicators">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+            </form>
         </div>
     </div>
 
-    <script src="~/js/script.js"></script>
-  
+    <!-- User Posts Section -->
+    <section class="post-section">
+        <h2 style="margin-left : 500px">Your Posts</h2>
+        <div class="carousel">
+            <button class="prev" aria-label="Previous Slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="carousel-content">
+                <div class="slide">
+                    <img src="~/Images/guest/child.png" alt="Child Rescue">
+                    <p>We rescue child beggars by reporting, tracking, and connecting them with welfare organizations for rehabilitation.</p>
+                </div>
+                <div class="slide">
+                    <img src="~/Images/guest/bird.png" alt="Bird Rescue">
+                    <p>Providing food and shelter to homeless children through our support programs.</p>
+                </div>
+                <div class="slide">
+                    <img src="~/Images/guest/child2.png" alt="Child Education">
+                    <p>Collaborating with NGOs to ensure child education and a better future.</p>
+                </div>
+            </div>
+            <button class="next" aria-label="Next Slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="indicators">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+    </section>
+
+    <script src="~/js/ScriptProfile.js" asp-append-version="true"></script>
+
 </body>
 </html>
