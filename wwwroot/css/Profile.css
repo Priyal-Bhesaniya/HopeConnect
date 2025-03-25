@@ -1,59 +1,58 @@
 ﻿/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #FFE4C4; /* Light beige */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #ffebd2;
+    text-align: center;
     margin: 0;
-    flex-direction: column;
+    padding: 0;
 }
 
-/* Header with Only Logo */
-.logo-header {
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
 }
 
-.logo img {
-    width: 50px;
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-/* Auth Container */
+/* Profile Section */
 .auth-container {
     width: 100%;
-    margin-top:600px;
+    padding: 20px;
 }
 
 /* Auth Box */
-
-.auth-box1 {
+.auth-box {
     background-color: #FCE3C7; /* Match your UI */
     padding: 30px;
     border-radius: 10px;
     width: 400px;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    height: 450px;
-}
-/* Heading */
-.auth-box h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    height: 370px;
 }
 
-/* Input Fields */
+
+.auth-box1 {
+    background-color: #FCE3C7;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
 .input-group {
     display: flex;
     align-items: center;
     background: white;
     padding: 8px;
     border-radius: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
     .input-group .icon {
@@ -66,9 +65,9 @@ body {
         outline: none;
         width: 100%;
         font-size: 14px;
+        padding: 5px;
     }
 
-/* Button */
 .btn {
     background-color: #FF914D;
     color: white;
@@ -84,14 +83,89 @@ body {
         background-color: #FF6A00;
     }
 
-/* Switch Auth */
-.switch-auth {
-    margin-top: 10px;
-    font-size: 14px;
+/* Carousel Section */
+.carousel {
+    position: relative;
+    background-color: #f7b57e;
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-    .switch-auth a {
-        color: #FF6A00;
-        text-decoration: none;
-        font-weight: bold;
+.carousel-content {
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    text-align: center;
+}
+
+    .slide.active {
+        display: block;
     }
+
+    .slide img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.prev, .next {
+    background-color: #e48c5f;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.indicators {
+    margin-top: 15px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #c7764d;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+    .dot.active {
+        background-color: #874d2a;
+    }
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .auth-box1 {
+        width: 90%;
+    }
+
+    .carousel {
+        padding: 20px;
+    }
+
+    .prev, .next {
+        width: 30px;
+        height: 30px;
+    }
+}
