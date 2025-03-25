@@ -4,9 +4,10 @@ namespace HopeConnect.Controllers.Organization
 {
     public class OnotificationController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Onotification()
         {
-            return View();
+            ViewData["ActivePage"] = "Onotification";
+            return View("~/Views/Organization/Onotification.cshtml");
         }
     }
 }

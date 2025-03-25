@@ -5,9 +5,9 @@ namespace HopeConnect.Controllers.Organization
 {
     public class AllPostApprovalController : Controller
     {
-        public IActionResult OPostApproval()
+        public IActionResult AllPostApproval()
         {
-            ViewData["ActivePage"] = "OPostApproval";
+            ViewData["ActivePage"] = "AllPostApproval";
             return View("~/Views/Organization/AllPostApproval.cshtml");
         }
     }

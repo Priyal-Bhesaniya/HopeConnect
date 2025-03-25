@@ -4,9 +4,10 @@ namespace HopeConnect.Controllers.Organization
 {
     public class OprofileController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Oprofile()
         {
-            return View();
+            ViewData["ActivePage"] = "Oprofile";
+            return View("~/Views/Organization/Oprofile.cshtml");
         }
     }
 }
