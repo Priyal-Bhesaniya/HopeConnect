@@ -2,6 +2,13 @@
     Layout = null;
 }
 
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-info">@TempData["Message"]</div>
+    }
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

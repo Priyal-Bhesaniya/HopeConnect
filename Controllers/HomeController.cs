@@ -1,7 +1,12 @@
 ﻿using CurdNew.Models;
 using HopeConnect.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using System;
 using System.Diagnostics;
+using System.Net.Mail;
+using System.Net;
 
 namespace HopeConnect.Controllers
 {
@@ -9,65 +14,107 @@ namespace HopeConnect.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly HomeModel _homeModel;
+        private readonly EmailSettings _emailSettings;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IOptions<EmailSettings> emailSettings)
         {
             _logger = logger;
             _homeModel = new HomeModel();
+            _emailSettings = emailSettings.Value;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Aboutus()
-        {
-            return View();
-        }
-
-        public IActionResult Contactus()
-        {
-            return View();
-        }
-
-      
+        public IActionResult Index() => View();
+        public IActionResult Aboutus() => View();
+        public IActionResult Contactus() => View();
+        public IActionResult Login() => View();
 
         [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
+        public IActionResult Register() => View();
 
         [HttpPost]
         public IActionResult Register(string Name, string Email, string MobileNo, string Password)
         {
-            // Create a new user from the submitted data
+            var token = Guid.NewGuid().ToString();
+
             var user = new HomeModel
             {
                 Name = Name,
                 Email = Email,
                 MobileNo = MobileNo,
-                Password = Password // Ensure you hash the password before storing in DB
+                Password = Password,
+                IsEmailVerified = false,
+                EmailVerificationToken = token
             };
 
-            // Save the user to the database (use service/repository pattern)
             bool isInserted = _homeModel.Insert(user);
 
             if (isInserted)
             {
-                // Redirect to the Login page after successful registration
-                return RedirectToAction("Login", "Home");
+                string verificationUrl = Url.Action("VerifyEmail", "Home", new { token = token }, Request.Scheme);
+                string subject = "Verify your email";
+                string body = $"Click the link to verify your email: <a href='{verificationUrl}'>Verify Email</a>";
+
+                SendEmail(Email, subject, body);
+
+                // ✅ Show message after registration
+                TempData["Message"] = "Registration successful! Please check your email to verify your account.";
+                return RedirectToAction("Login");
+            }
+
+            ViewBag.Message = "Registration failed. Please try again.";
+            return View();
+        }
+
+        public IActionResult VerifyEmail(string token)
+        {
+            if (string.IsNullOrEmpty(token))
+            {
+                TempData["Message"] = "Invalid token.";
+                return RedirectToAction("Login");
+            }
+
+            var user = _homeModel.GetUserByToken(token);
+
+            if (user != null)
+            {
+                user.IsEmailVerified = true;
+                bool isUpdated = _homeModel.UpdateEmailVerification(user);
+
+                if (isUpdated)
+                    TempData["Message"] = "Email verified successfully. You can now log in.";
+                else
+                    TempData["Message"] = "Error while verifying your email.";
             }
             else
             {
-                ViewBag.Message = "Registration failed. Please try again.";
-                return View();
+                TempData["Message"] = "Invalid or expired verification link.";
             }
+
+            // ✅ Always redirect to Login after clicking the link
+            return RedirectToAction("Login");
         }
-        public IActionResult Login()
+
+
+
+
+        private void SendEmail(string toEmail, string subject, string body)
         {
-            return View();
+            using (var client = new SmtpClient(_emailSettings.SmtpServer, _emailSettings.Port))
+            {
+                client.EnableSsl = true;
+                client.Credentials = new NetworkCredential(_emailSettings.SenderEmail, _emailSettings.Password);
+
+                var mail = new MailMessage
+                {
+                    From = new MailAddress(_emailSettings.SenderEmail, "Hope Connect"),
+                    Subject = subject,
+                    Body = body,
+                    IsBodyHtml = true
+                };
+                mail.To.Add(toEmail);
+
+                client.Send(mail);
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

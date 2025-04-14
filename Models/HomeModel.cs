@@ -1,107 +1,81 @@
 ﻿using Microsoft.Data.SqlClient;
-using System.Collections.Generic;
 
 namespace CurdNew.Models
 {
     public class HomeModel
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string MobileNo { get; set; }
         public string Password { get; set; }
+        public bool IsEmailVerified { get; set; }
+        public string EmailVerificationToken { get; set; }
 
-        SqlConnection con = new SqlConnection("Data Source=(localdb)\\ProjectModels;Initial Catalog=HopeConnect;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+        SqlConnection con = new SqlConnection("Data Source=(localdb)\\ProjectModels;Initial Catalog=HopeConnect;Integrated Security=True");
 
-
-        // Insert User
+        // Insert new user
         public bool Insert(HomeModel home)
         {
-            string query = "INSERT INTO Users (Name, Email, MobileNo, Password) VALUES (@Name, @Email, @MobileNo, @Password)";
+            string query = "INSERT INTO Users (Name, Email, MobileNo, Password, IsEmailVerified, EmailVerificationToken) " +
+                           "VALUES (@Name, @Email, @MobileNo, @Password, @IsEmailVerified, @EmailVerificationToken)";
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.AddWithValue("@Name", home.Name);
             cmd.Parameters.AddWithValue("@Email", home.Email);
             cmd.Parameters.AddWithValue("@MobileNo", home.MobileNo);
             cmd.Parameters.AddWithValue("@Password", home.Password);
+            cmd.Parameters.AddWithValue("@IsEmailVerified", home.IsEmailVerified);
+            cmd.Parameters.AddWithValue("@EmailVerificationToken", home.EmailVerificationToken);
+
             con.Open();
             int i = cmd.ExecuteNonQuery();
             con.Close();
             return i > 0;
         }
 
-        //  Update User by ID
-        public bool Update(HomeModel home)
+        // Get user using token
+        public HomeModel GetUserByToken(string token)
         {
-            string query = "UPDATE Users SET Name=@Name, Email=@Email, MobileNo=@MobileNo, Password=@Password WHERE Id=@Id";
+            string query = "SELECT * FROM Users WHERE EmailVerificationToken = @Token";
             SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@Id", home.Id);
-            cmd.Parameters.AddWithValue("@Name", home.Name);
-            cmd.Parameters.AddWithValue("@Email", home.Email);
-            cmd.Parameters.AddWithValue("@MobileNo", home.MobileNo);
-            cmd.Parameters.AddWithValue("@Password", home.Password);
-            con.Open();
-            int i = cmd.ExecuteNonQuery();
-            con.Close();
-            return i > 0;
-        }
+            cmd.Parameters.AddWithValue("@Token", token);
 
-        //  Delete User by ID
-        public bool Delete(int id)
-        {
-            string query = "DELETE FROM Users WHERE Id=@Id";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@Id", id);
-            con.Open();
-            int i = cmd.ExecuteNonQuery();
-            con.Close();
-            return i > 0;
-        }
-
-        //  Get User by ID
-        public HomeModel GetHomeById(int id)
-        {
-            string query = "SELECT * FROM Users WHERE Id=@Id";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@Id", id);
             con.Open();
             SqlDataReader reader = cmd.ExecuteReader();
-            HomeModel home = null;
+            HomeModel user = null;
+
             if (reader.Read())
             {
-                home = new HomeModel
+                user = new HomeModel
                 {
-                    Id = (int)reader["Id"],
+                    UserId = (int)reader["UserId"],  // Changed from Id
                     Name = reader["Name"].ToString(),
                     Email = reader["Email"].ToString(),
                     MobileNo = reader["MobileNo"].ToString(),
-                    Password = reader["Password"].ToString()
+                    Password = reader["Password"].ToString(),
+                    IsEmailVerified = (bool)reader["IsEmailVerified"],
+                    EmailVerificationToken = reader["EmailVerificationToken"].ToString()
                 };
             }
+
             con.Close();
-            return home;
+            return user;
         }
 
-        //  Get All Users
-        public List<HomeModel> GetAllHomes()
+        // Update verification status
+        public bool UpdateEmailVerification(HomeModel user)
         {
-            List<HomeModel> lsthome = new List<HomeModel>();
-            string query = "SELECT * FROM Users";
+            string query = "UPDATE Users SET IsEmailVerified = @IsEmailVerified WHERE EmailVerificationToken = @Token";
             SqlCommand cmd = new SqlCommand(query, con);
+
+            cmd.Parameters.AddWithValue("@IsEmailVerified", user.IsEmailVerified);
+            cmd.Parameters.AddWithValue("@Token", user.EmailVerificationToken);
+
             con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                lsthome.Add(new HomeModel
-                {
-                    Id = (int)reader["Id"],
-                    Name = reader["Name"].ToString(),
-                    Email = reader["Email"].ToString(),
-                    MobileNo = reader["MobileNo"].ToString(),
-                    Password = reader["Password"].ToString()
-                });
-            }
+            int result = cmd.ExecuteNonQuery();
             con.Close();
-            return lsthome;
+
+            return result > 0;
         }
     }
 }
