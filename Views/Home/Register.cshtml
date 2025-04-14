@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/Login.css" />
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -31,30 +33,37 @@
         </header>
 
         <!-- Signup Form -->
-        <form method="post" asp-controller="Home" asp-action="Register">
+        <form method="post" asp-controller="Home" asp-action="Register" onsubmit="return validateForm()">
             <div class="auth-container">
                 <div class="auth-box1">
                     <h2>Create an Account</h2>
 
                     <div class="input-group">
                         <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="User Icon" class="icon">
-                        <input type="text" name="Name" placeholder="Name" required>
+                        <input type="text" name="Name" id="Name" placeholder="Name" required pattern="[A-Za-z\s]+" title="Name can only contain letters.">
                     </div>
 
                     <div class="input-group">
                         <img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email Icon" class="icon">
-                        <input type="email" name="Email" placeholder="Email" required>
+                        <input type="email" name="Email" id="Email" placeholder="Email" required onblur="checkEmail()">
+                        <span id="emailError" style="color:red;"></span>
                     </div>
 
                     <div class="input-group">
                         <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone Icon" class="icon">
-                        <input type="text" name="MobileNo" placeholder="Mobile No" required>
+                        <input type="text" name="MobileNo" id="MobileNo" placeholder="Mobile No" required pattern="\d{10}" title="Mobile number must be exactly 10 digits." onblur="checkMobile()">
+                        <span id="mobileError" style="color:red;"></span>
                     </div>
 
                     <div class="input-group">
                         <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" alt="Lock Icon" class="icon">
-                        <input type="password" name="Password" placeholder="Password" required>
+                        <input type="password" id="Password" name="Password"
+                               placeholder="Password"
+                               required
+                               title="Password must not be empty.">
                     </div>
+
+                    <span id="passwordError" style="color:red;"></span>
 
                     <button type="submit" class="btn">Create Account</button>
 
@@ -64,5 +73,57 @@
         </form>
 
     </div>
+
+    <script>
+        function validateForm() {
+            const password = document.getElementById("Password").value;
+            const errorSpan = document.getElementById("passwordError");
+
+            if (password.trim() === "") {
+                errorSpan.textContent = "Password cannot be empty.";
+                return false;
+            }
+
+            errorSpan.textContent = "";
+            return true;
+        }
+
+        function checkEmail() {
+            var email = $("#Email").val();
+            $.ajax({
+                url: '/Home/CheckEmail', // Ensure this matches your controller and action
+                type: 'POST',
+                data: { email: email },
+                success: function (result) {
+                    if (!result.isAvailable) {
+                        $("#emailError").text("Email already exists.");
+                    } else {
+                        $("#emailError").text("");
+                    }
+                }
+            });
+        }
+
+        function checkMobile() {
+            var mobile = $("#MobileNo").val();
+            if (mobile.length !== 10 || !/^\d+$/.test(mobile)) {
+                $("#mobileError").text("Mobile number must be exactly 10 digits.");
+                return;
+            }
+            $.ajax({
+                url: '/Home/CheckMobile', // Ensure this matches your controller and action
+                type: 'POST',
+                data: { mobile: mobile },
+                success: function (result) {
+                    if (!result.isAvailable) {
+                        $("#mobileError").text("Mobile number already in use.");
+                    } else {
+                        $("#mobileError").text("");
+                    }
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>

@@ -49,12 +49,49 @@ namespace HopeConnect.Controllers
             return View(); // create User.cshtml page to show user info
         }
 
+
+
         [HttpGet]
         public IActionResult Register() => View();
 
         [HttpPost]
         public IActionResult Register(string Name, string Email, string MobileNo, string Password)
         {
+            // Name should contain only letters
+            if (!System.Text.RegularExpressions.Regex.IsMatch(Name, @"^[a-zA-Z\s]+$"))
+            {
+                ViewBag.Message = "Name should contain only letters.";
+                return View();
+            }
+
+            // Email format check
+            try
+            {
+                var emailCheck = new MailAddress(Email);
+            }
+            catch
+            {
+                ViewBag.Message = "Invalid email format.";
+                return View();
+            }
+
+            // MobileNo must be 10 digits
+            if (!System.Text.RegularExpressions.Regex.IsMatch(MobileNo, @"^\d{10}$"))
+            {
+                ViewBag.Message = "Mobile number must be 10 digits.";
+                return View();
+            }
+
+            // Password must be at least 6 characters and contain at least one number or symbol
+            if (string.IsNullOrWhiteSpace(Password) ||
+                Password.Length < 6 ||
+                !System.Text.RegularExpressions.Regex.IsMatch(Password, @"^(?=.*[0-9!@#$%^&*])[A-Za-z0-9!@#$%^&*]{6,}$"))
+            {
+                ViewBag.Message = "Password must be at least 6 characters and include a number or symbol.";
+                return View();
+            }
+
+            // Token generation for email verification
             var token = Guid.NewGuid().ToString();
 
             var user = new HomeModel
@@ -77,7 +114,6 @@ namespace HopeConnect.Controllers
 
                 SendEmail(Email, subject, body);
 
-                // ✅ Show message after registration
                 TempData["Message"] = "Registration successful! Please check your email to verify your account.";
                 return RedirectToAction("Login");
             }
