@@ -77,5 +77,35 @@ namespace CurdNew.Models
 
             return result > 0;
         }
+
+        public HomeModel GetUserByEmailAndPassword(string email, string password)
+        {
+            string query = "SELECT * FROM Users WHERE Email = @Email AND Password = @Password AND IsEmailVerified = 1";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@Email", email);
+            cmd.Parameters.AddWithValue("@Password", password);
+
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            HomeModel user = null;
+
+            if (reader.Read())
+            {
+                user = new HomeModel
+                {
+                    UserId = (int)reader["UserId"],
+                    Name = reader["Name"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    MobileNo = reader["MobileNo"].ToString(),
+                    Password = reader["Password"].ToString(),
+                    IsEmailVerified = (bool)reader["IsEmailVerified"],
+                    EmailVerificationToken = reader["EmailVerificationToken"].ToString()
+                };
+            }
+
+            con.Close();
+            return user;
+        }
+
     }
 }

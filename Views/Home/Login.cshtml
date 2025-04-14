@@ -43,19 +43,22 @@
                 <h2>Login Form</h2>
 
                 <!-- Login Form -->
-                <form asp-controller="User" asp-action="Login" method="get">
+                <form asp-controller="Home" asp-action="Login" method="post">
                     <div class="input-group">
-                        <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="User Icon" class="icon">
-                        <input type="text" name="Username" placeholder="Enter Username" required>
+                        <img src="https://img.icons8.com/ios-filled/50/000000/user.png" class="icon">
+                        <input type="text" name="Email" placeholder="Enter Email" required>
                     </div>
 
                     <div class="input-group">
-                        <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" alt="Lock Icon" class="icon">
+                        <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" class="icon">
                         <input type="password" name="Password" placeholder="Enter Password" required>
                     </div>
 
-                    <button type="submit" class="btn"><a class="navbar-brand" asp-area="" asp-controller="User" asp-action="User" style="color:black">Login</a></button>
+                    <button type="submit" class="btn">Login</button>
+
+
                 </form>
+
 
                 <p class="switch-auth">
                     Not a member? <a asp-controller="Home" asp-action="Register"><strong>Signup Now</strong></a>

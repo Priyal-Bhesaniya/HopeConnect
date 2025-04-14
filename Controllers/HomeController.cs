@@ -26,7 +26,28 @@ namespace HopeConnect.Controllers
         public IActionResult Index() => View();
         public IActionResult Aboutus() => View();
         public IActionResult Contactus() => View();
+        [HttpGet]
         public IActionResult Login() => View();
+
+        [HttpPost]
+        public IActionResult Login(string Email, string Password)
+        {
+            var user = _homeModel.GetUserByEmailAndPassword(Email, Password);
+
+            if (user != null)
+            {
+                TempData["Message"] = "Login successful!";
+                return RedirectToAction("User", "User"); // Now redirects to UserController → User action
+            }
+
+            TempData["Message"] = "Invalid credentials or email not verified.";
+            return RedirectToAction("Login");
+        }
+
+        public IActionResult User()
+        {
+            return View(); // create User.cshtml page to show user info
+        }
 
         [HttpGet]
         public IActionResult Register() => View();
