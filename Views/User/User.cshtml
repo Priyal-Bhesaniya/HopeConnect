@@ -14,57 +14,126 @@
     <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/User.css">
+    <style>
+        .user-posts {
+            max-width: 600px; /* Increased width */
+            margin: 100px auto 0; /* More margin from the top */
+            display: flex;
+            justify-content: center;
+            margin-left: 370px;
+        }
+
+        .post-card {
+            width: 100%;
+            padding: 20px;
+            font-size: 16px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow for card effect */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 1px solid #ddd;
+        }
+
+            .post-card:hover {
+                transform: scale(1.05); /* Slight pop effect on hover */
+                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+            .post-header h5 {
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+            }
+
+        .post-content p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .post-content img {
+            display: block;
+            width: 100%; /* Adjusted for responsiveness */
+            max-width: 250px; /* Larger image */
+            height: auto;
+            margin: 10px auto;
+            border-radius: 10px;
+        }
+
+        .post-footer {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+            .post-footer a {
+                color: black;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+                .post-footer a:hover {
+                    text-decoration: underline;
+                }
+
+    </style>
 </head>
 <body>
-
     <!-- Middle Content (User Posts Section) -->
-    <div class="container">
+    <div class="min-vw-100">
         <!-- User Post Section -->
         <div class="user-posts">
             <!-- Single Post -->
-            <div class="post-card">
+            <div class="post-card flex justify-content-center">
                 <div class="post-header">
                     <h5>Priyal Bhesaniya</h5>
                     <i class="fas fa-external-link-alt"></i> <!-- Icon for external post link -->
                 </div>
                 <div class="post-content">
                     <p>I found two child beggars at Raiya Chowk, struggling without food or shelter. They need urgent rescue and support from welfare organizations. Please take immediate action to help them find a safe place.</p>
-                    <img src="~/Images/guest/child2.png" alt="Child Beggars">
+                    <img class="w-10" src="~/Images/guest/child2.png" alt="Child Beggars">
                 </div>
                 <div class="post-footer">
-                    <span>📍 Location</span>
+                    <p class="switch-auth text-center flex align-items-center p-0 m-0">
+                       <strong>📍 Location</strong>
+                    </p>
                 </div>
             </div>
 
-            <!-- Another Post -->
-            <div class="post-card">
+
+
+        </div>
+
+        <div class="user-posts">
+            <!-- Single Post -->
+            <div class="post-card flex justify-content-center">
                 <div class="post-header">
-                    <h5>Madhvi Sanghani</h5>
+                    <h5>Priyal Bhesaniya</h5>
+                    <i class="fas fa-external-link-alt"></i> <!-- Icon for external post link -->
                 </div>
                 <div class="post-content">
-                    <p>I found garbage floating in the water, making it look dirty and unsafe. It harms the environment and marine life, showing the need for proper waste disposal.</p>
-                    <img src="~/Images/guest/child.png" alt="Pollution Image">
+                    <p>I found two child beggars at Raiya Chowk, struggling without food or shelter. They need urgent rescue and support from welfare organizations. Please take immediate action to help them find a safe place.</p>
+                    <img class="w-10" src="~/Images/guest/child2.png" alt="Child Beggars">
                 </div>
                 <div class="post-footer">
-                    <span>📍 Location</span>
+                    <p class="switch-auth text-center flex align-items-center p-0 m-0">
+                        <strong>📍 Location</strong>
+                    </p>
                 </div>
             </div>
 
 
-            <div class="post-card">
-                <div class="post-header">
-                    <h5>Madhvi Sanghani</h5>
-                </div>
-                <div class="post-content">
-                    <p>I found garbage floating in the water, making it look dirty and unsafe. It harms the environment and marine life, showing the need for proper waste disposal.</p>
-                    <img src="~/Images/guest/child.png" alt="Pollution Image">
-                </div>
-                <div class="post-footer">
-                    <span>📍 Location</span>
-                </div>
-            </div>
+
         </div>
     </div>
-
 </body>
 </html>

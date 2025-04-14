@@ -1,3 +1,4 @@
+﻿using CurdNew.Models;
 using HopeConnect.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -7,10 +8,12 @@ namespace HopeConnect.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly HomeModel _homeModel;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _homeModel = new HomeModel();
         }
 
         public IActionResult Index()
@@ -27,12 +30,42 @@ namespace HopeConnect.Controllers
         {
             return View();
         }
-        public IActionResult Login()
+
+      
+
+        [HttpGet]
+        public IActionResult Register()
         {
             return View();
         }
 
-        public IActionResult Register()
+        [HttpPost]
+        public IActionResult Register(string Name, string Email, string MobileNo, string Password)
+        {
+            // Create a new user from the submitted data
+            var user = new HomeModel
+            {
+                Name = Name,
+                Email = Email,
+                MobileNo = MobileNo,
+                Password = Password // Ensure you hash the password before storing in DB
+            };
+
+            // Save the user to the database (use service/repository pattern)
+            bool isInserted = _homeModel.Insert(user);
+
+            if (isInserted)
+            {
+                // Redirect to the Login page after successful registration
+                return RedirectToAction("Login", "Home");
+            }
+            else
+            {
+                ViewBag.Message = "Registration failed. Please try again.";
+                return View();
+            }
+        }
+        public IActionResult Login()
         {
             return View();
         }

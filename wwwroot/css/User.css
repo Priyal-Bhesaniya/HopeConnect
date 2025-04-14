@@ -22,8 +22,11 @@ body {
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 60%; /* Adjust width for better alignment */
+    width: 80%; /* Adjust width for better alignment */
     margin: 20px 0; /* Centering horizontally */
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
 }
 
 /* Post Header */
@@ -51,10 +54,15 @@ body {
 }
 
 .post-content img {
-    width: 100%;
-    height: auto;
+    width: 300px;
+    height: 300px;
     border-radius: 5px;
     margin-top: 10px;
+    margin: auto;
+    
+    max-width: 50%; 
+    max-height: 50%; 
+    object-fit: contain; 
 }
 
 /* Post Footer */

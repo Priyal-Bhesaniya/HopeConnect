@@ -1,10 +1,6 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
     Layout = null;
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,15 +26,12 @@
                              width="150"
                              style="margin-right:1700px" />
                     </a>
-
                 </div>
             </nav>
         </header>
 
-         
-
         <!-- Signup Form -->
-        <form asp-controller="User" asp-action="Register" method="post">
+        <form method="post" asp-controller="Home" asp-action="Register">
             <div class="auth-container">
                 <div class="auth-box1">
                     <h2>Create an Account</h2>
@@ -65,7 +58,7 @@
 
                     <button type="submit" class="btn">Create Account</button>
 
-                    <p class="switch-auth">Have an organization? <a asp-controller="ORegister" asp-action="ORegister"><strong>Create One</strong></a></p>
+                    <p class="switch-auth">Already have an account? <a asp-controller="Home" asp-action="Login"><strong>Login</strong></a></p>
                 </div>
             </div>
         </form>
