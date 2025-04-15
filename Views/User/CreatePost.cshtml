@@ -14,7 +14,8 @@
 <body>
     <form asp-controller="CreatePost" asp-action="SubmitPost" method="post" enctype="multipart/form-data">
         <div class="container">
-            <div class="header">Priyal Bhesaniya</div>
+            <div class="header">@ViewBag.UserName</div> @* loged in user name *@
+
 
             <textarea id="txtThoughts" name="thoughts" rows="5" placeholder="Share your thoughts .............."></textarea>
 

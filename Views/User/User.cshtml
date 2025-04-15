@@ -1,9 +1,8 @@
-﻿
+﻿@model List<HopeConnect.Models.PostModel>
+
 @{
-   
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,13 +10,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Posts</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/User.css">
     <style>
         .user-posts {
-            max-width: 600px; /* Increased width */
-            margin: 100px auto 0; /* More margin from the top */
+            max-width: 600px;
+            margin: 100px auto 0;
             display: flex;
             justify-content: center;
             margin-left: 370px;
@@ -29,13 +28,13 @@
             font-size: 16px;
             background: #fff;
             border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow for card effect */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             border: 1px solid #ddd;
         }
 
             .post-card:hover {
-                transform: scale(1.05); /* Slight pop effect on hover */
+                transform: scale(1.05);
                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
             }
 
@@ -63,8 +62,8 @@
 
         .post-content img {
             display: block;
-            width: 100%; /* Adjusted for responsiveness */
-            max-width: 250px; /* Larger image */
+            width: 100%;
+            max-width: 250px;
             height: auto;
             margin: 10px auto;
             border-radius: 10px;
@@ -84,56 +83,34 @@
                 .post-footer a:hover {
                     text-decoration: underline;
                 }
-
     </style>
 </head>
 <body>
     <!-- Middle Content (User Posts Section) -->
     <div class="min-vw-100">
-        <!-- User Post Section -->
-        <div class="user-posts">
-            <!-- Single Post -->
-            <div class="post-card flex justify-content-center">
-                <div class="post-header">
-                    <h5>Priyal Bhesaniya</h5>
-                    <i class="fas fa-external-link-alt"></i> <!-- Icon for external post link -->
-                </div>
-                <div class="post-content">
-                    <p>I found two child beggars at Raiya Chowk, struggling without food or shelter. They need urgent rescue and support from welfare organizations. Please take immediate action to help them find a safe place.</p>
-                    <img class="w-10" src="~/Images/guest/child2.png" alt="Child Beggars">
-                </div>
-                <div class="post-footer">
-                    <p class="switch-auth text-center flex align-items-center p-0 m-0">
-                       <strong>📍 Location</strong>
-                    </p>
-                </div>
-            </div>
-
-
-
-        </div>
-
-        <div class="user-posts">
-            <!-- Single Post -->
-            <div class="post-card flex justify-content-center">
-                <div class="post-header">
-                    <h5>Priyal Bhesaniya</h5>
-                    <i class="fas fa-external-link-alt"></i> <!-- Icon for external post link -->
-                </div>
-                <div class="post-content">
-                    <p>I found two child beggars at Raiya Chowk, struggling without food or shelter. They need urgent rescue and support from welfare organizations. Please take immediate action to help them find a safe place.</p>
-                    <img class="w-10" src="~/Images/guest/child2.png" alt="Child Beggars">
-                </div>
-                <div class="post-footer">
-                    <p class="switch-auth text-center flex align-items-center p-0 m-0">
-                        <strong>📍 Location</strong>
-                    </p>
+        @foreach (var post in Model)
+        {
+            <div class="user-posts">
+                <div class="post-card flex justify-content-center">
+                    <div class="post-header">
+                        <h5>@post.Name</h5>
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                    <div class="post-content">
+                        <p>@post.ThoughtText</p>
+                        @if (!string.IsNullOrEmpty(post.PhotoPath))
+                        {
+                            <img class="w-10" src="@Url.Content(post.PhotoPath)" alt="Post Image">
+                        }
+                    </div>
+                    <div class="post-footer">
+                        <p class="switch-auth text-center flex align-items-center p-0 m-0">
+                            <strong>📍 @post.LocationName</strong>
+                        </p>
+                    </div>
                 </div>
             </div>
-
-
-
-        </div>
+        }
     </div>
 </body>
 </html>
