@@ -1,39 +1,59 @@
 ﻿@{
     Layout = "~/Views/Shared/_UserLayout.cshtml";
-   
 }
 
-
-
+<!DOCTYPE html>
 <html>
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notifications</title>
+    <title>Create Post</title>
     <link rel="stylesheet" href="~/css/post.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
-    <div class="container">
-        <div class="header">Priyal bhesaniya</div>
+</head>
+<body>
+    <form asp-controller="CreatePost" asp-action="SubmitPost" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="header">Priyal Bhesaniya</div>
 
-        <textarea id="txtThoughts" rows="5" placeholder="Share your thoughts .............."></textarea>
+            <textarea id="txtThoughts" name="thoughts" rows="5" placeholder="Share your thoughts .............."></textarea>
 
-        <div class="action-panel">
-            <input type="file" id="fileInput"/>
+            <div class="action-panel">
+                <input type="file" id="fileInput" name="photo" />
 
-            <select id="ddlOrganization">
-                <option>🏢 Choose Organization</option>
-                <option>Maa Gauri Gaushala</option>
-                <option>Shree Kranti Manav Seva Trust</option>
-                <option>Navjeevan Trust</option>
-            </select>
+                <select id="ddlOrganization" name="organization">
+                    <option>🏢 Choose Organization</option>
+                    <option>Maa Gauri Gaushala</option>
+                    <option>Shree Kranti Manav Seva Trust</option>
+                    <option>Navjeevan Trust</option>
+                </select>
 
-            <button class="btn-submit">
-                ➤
-            </button>
+                <!-- Hidden fields for location -->
+                <input type="hidden" id="latitude" name="latitude" />
+                <input type="hidden" id="longitude" name="longitude" />
+                <input type="hidden" id="locationName" name="locationName" />
+
+                <button class="btn-submit" type="submit">➤</button>
+            </div>
         </div>
-    </div>
-    </body>
-</html>
+    </form>
 
+    <script>
+        async function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(async (pos) => {
+                    document.getElementById("latitude").value = pos.coords.latitude;
+                    document.getElementById("longitude").value = pos.coords.longitude;
+
+                    // Reverse Geocode using OpenStreetMap API
+                    const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${pos.coords.latitude}&lon=${pos.coords.longitude}`);
+                    const data = await response.json();
+                    document.getElementById("locationName").value = data.display_name || '';
+                });
+            }
+        }
+
+        window.onload = getLocation;
+    </script>
+</body>
+</html>
