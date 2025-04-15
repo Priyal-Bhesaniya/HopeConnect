@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HopeConnect.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace HopeConnect.Controllers.User
 {
@@ -7,10 +9,11 @@ namespace HopeConnect.Controllers.User
         public IActionResult User()
         {
             ViewData["ActivePage"] = "AllPost";
-            return View();
+
+            PostModel postModel = new PostModel();
+            List<PostModel> posts = postModel.GetAllPosts();
+
+            return View(posts);
         }
-
-
-
     }
 }
