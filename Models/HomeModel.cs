@@ -107,5 +107,52 @@ namespace CurdNew.Models
             return user;
         }
 
+        // Get user by email (for Profile fetching)
+        public HomeModel GetUserByEmail(string email)
+        {
+            string query = "SELECT * FROM Users WHERE Email = @Email";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@Email", email);
+
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            HomeModel user = null;
+
+            if (reader.Read())
+            {
+                user = new HomeModel
+                {
+                    UserId = (int)reader["UserId"],
+                    Name = reader["Name"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    MobileNo = reader["MobileNo"].ToString(),
+                    Password = reader["Password"].ToString(),
+                    IsEmailVerified = (bool)reader["IsEmailVerified"],
+                    EmailVerificationToken = reader["EmailVerificationToken"].ToString()
+                };
+            }
+
+            con.Close();
+            return user;
+        }
+
+        // Update user profile (Name, MobileNo, Password) using email
+        public bool UpdateUserProfile(HomeModel user)
+        {
+            string query = "UPDATE Users SET Name = @Name, MobileNo = @MobileNo, Password = @Password WHERE Email = @Email";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@Name", user.Name);
+            cmd.Parameters.AddWithValue("@MobileNo", user.MobileNo);
+            cmd.Parameters.AddWithValue("@Password", user.Password);
+            cmd.Parameters.AddWithValue("@Email", user.Email);
+
+            con.Open();
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+
+            return result > 0;
+        }
+
+
     }
 }

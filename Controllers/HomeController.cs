@@ -28,7 +28,6 @@ namespace HopeConnect.Controllers
         public IActionResult Contactus() => View();
         [HttpGet]
         public IActionResult Login() => View();
-
         [HttpPost]
         public IActionResult Login(string Email, string Password)
         {
@@ -37,13 +36,13 @@ namespace HopeConnect.Controllers
             if (user != null)
             {
                 TempData["Message"] = "Login successful!";
-                return RedirectToAction("User", "User"); // Now redirects to UserController → User action
+                HttpContext.Session.SetString("UserEmail", Email); // Save email in session
+                return RedirectToAction("Profile", "Profile");
             }
 
             TempData["Message"] = "Invalid credentials or email not verified.";
             return RedirectToAction("Login");
         }
-
         public IActionResult User()
         {
             return View(); // create User.cshtml page to show user info
