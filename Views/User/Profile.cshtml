@@ -55,35 +55,42 @@
 
     <!-- User Posts Section -->
     <section class="post-section">
-        <h2 style="margin-left : 300px">Your Posts</h2>
-        <div class="carousel">
-            <button class="prev" aria-label="Previous Slide">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <div class="carousel-content">
-                <div class="slide">
-                    <img src="~/Images/guest/child.png" alt="Child Rescue">
-                    <p>We rescue child beggars by reporting, tracking, and connecting them with welfare organizations for rehabilitation.</p>
+        <!-- User Posts Section -->
+        <section class="post-section">
+            <h2 style="margin-left : 300px">Your Posts</h2>
+            <div class="carousel">
+                <button class="prev" aria-label="Previous Slide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-content">
+                    @if (ViewBag.Posts != null)
+                    {
+                        foreach (var post in (List<HopeConnect.Models.PostModel>)ViewBag.Posts)
+                        {
+                            <div class="slide">
+                                <img src="@post.PhotoPath" alt="Post Image" style="width: 300px; height: 200px; object-fit: cover;" />
+                                <p>@post.ThoughtText</p>
+                                <p><strong>@post.LocationName</strong> - @post.Organization</p>
+                                <p><small>@post.CreatedAt.ToString("dd MMM yyyy hh:mm tt")</small></p>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="slide">
+                            <p>No posts found.</p>
+                        </div>
+                    }
                 </div>
-                <div class="slide">
-                    <img src="~/Images/guest/bird.png" alt="Bird Rescue">
-                    <p>Providing food and shelter to homeless children through our support programs.</p>
-                </div>
-                <div class="slide">
-                    <img src="~/Images/guest/child2.png" alt="Child Education">
-                    <p>Collaborating with NGOs to ensure child education and a better future.</p>
-                </div>
+                <button class="next" aria-label="Next Slide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
-            <button class="next" aria-label="Next Slide">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-        <div class="indicators">
-            <span class="dot active" data-index="0"></span>
-            <span class="dot" data-index="1"></span>
-            <span class="dot" data-index="2"></span>
-        </div>
-    </section>
+            <div class="indicators">
+                @* You can dynamically generate indicators with JS *@
+            </div>
+        </section>
+
 
     <script src="~/js/ScriptProfile.js" asp-append-version="true"></script>
 </body>

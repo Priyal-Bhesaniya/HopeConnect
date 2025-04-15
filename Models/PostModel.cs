@@ -77,5 +77,46 @@ namespace HopeConnect.Models
             con.Close();
             return posts;
         }
+
+        public List<PostModel> GetPostsByUserId(int userId)
+        {
+            List<PostModel> posts = new List<PostModel>();
+            string query = @"
+        SELECT P.PostId, P.UserId, P.ThoughtText, P.PhotoPath, P.Latitude, P.Longitude, P.LocationName, 
+               P.Organization, P.CreatedAt, U.Name 
+        FROM Posts P 
+        INNER JOIN Users U ON P.UserId = U.UserId
+        WHERE P.UserId = @UserId
+        ORDER BY P.CreatedAt DESC";
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@UserId", userId);
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                posts.Add(new PostModel
+                {
+                    PostId = (int)reader["PostId"],
+                    UserId = (int)reader["UserId"],
+                    ThoughtText = reader["ThoughtText"].ToString(),
+                    PhotoPath = reader["PhotoPath"].ToString(),
+                    Latitude = Convert.ToDouble(reader["Latitude"]),
+                    Longitude = Convert.ToDouble(reader["Longitude"]),
+                    LocationName = reader["LocationName"].ToString(),
+                    Organization = reader["Organization"].ToString(),
+                    CreatedAt = Convert.ToDateTime(reader["CreatedAt"]),
+                    Name = reader["Name"].ToString()
+                });
+            }
+
+            con.Close();
+            return posts;
+        }
+
+
+
+
     }
 }

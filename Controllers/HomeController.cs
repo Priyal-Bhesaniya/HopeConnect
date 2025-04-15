@@ -36,11 +36,9 @@ namespace HopeConnect.Controllers
             if (user != null)
             {
                 TempData["Message"] = "Login successful!";
-                TempData["UserName"] = user.Name; 
                 HttpContext.Session.SetString("UserEmail", Email); // Save email in session
                 return RedirectToAction("Profile", "Profile");
             }
-
 
             TempData["Message"] = "Invalid credentials or email not verified.";
             return RedirectToAction("Login");

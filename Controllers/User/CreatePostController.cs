@@ -12,8 +12,6 @@ namespace HopeConnect.Controllers.User
         public IActionResult Index()
         {
             ViewData["ActivePage"] = "CreatePost";
-            ViewBag.UserName = TempData["UserName"] ?? "User"; // ✅ set ViewBag before return
-            TempData.Keep("UserName"); // keep for next request
             return View("~/Views/User/CreatePost.cshtml");
         }
 
@@ -26,8 +24,7 @@ namespace HopeConnect.Controllers.User
 
             var homeModel = new HomeModel();
             var user = homeModel.GetUserByEmail(email);
-            if (user == null)
-                return RedirectToAction("Login", "Home");
+            if (user == null) return RedirectToAction("Login", "Home");
 
             string filePath = null;
             if (photo != null && photo.Length > 0)
