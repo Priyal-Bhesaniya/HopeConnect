@@ -53,74 +53,29 @@ namespace HopeConnect.Models
                 INNER JOIN Users U ON P.UserId = U.UserId
                 ORDER BY P.CreatedAt DESC";
 
+            SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             SqlDataReader reader = cmd.ExecuteReader();
-            HomeModel user = null;
 
-            if (reader.Read())
+            while (reader.Read())
             {
-                user = new HomeModel
+                posts.Add(new PostModel
                 {
+                    PostId = (int)reader["PostId"],
                     UserId = (int)reader["UserId"],
-                    Name = reader["Name"].ToString(),
-                    Email = reader["Email"].ToString(),
-                    MobileNo = reader["MobileNo"].ToString(),
-                    Password = reader["Password"].ToString(),
-                    IsEmailVerified = (bool)reader["IsEmailVerified"],
-                    EmailVerificationToken = reader["EmailVerificationToken"].ToString()
-                };
+                    ThoughtText = reader["ThoughtText"].ToString(),
+                    PhotoPath = reader["PhotoPath"].ToString(),
+                    Latitude = Convert.ToDouble(reader["Latitude"]),
+                    Longitude = Convert.ToDouble(reader["Longitude"]),
+                    LocationName = reader["LocationName"].ToString(),
+                    Organization = reader["Organization"].ToString(),
+                    CreatedAt = Convert.ToDateTime(reader["CreatedAt"]),
+                    Name = reader["Name"].ToString()
+                });
             }
 
             con.Close();
-            return user;
+            return posts;
         }
-
-        // Get user by email (for Profile fetching)
-        public HomeModel GetUserByEmail(string email)
-        {
-            string query = "SELECT * FROM Users WHERE Email = @Email";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@Email", email);
-
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-            HomeModel user = null;
-
-            if (reader.Read())
-            {
-                user = new HomeModel
-                {
-                    UserId = (int)reader["UserId"],
-                    Name = reader["Name"].ToString(),
-                    Email = reader["Email"].ToString(),
-                    MobileNo = reader["MobileNo"].ToString(),
-                    Password = reader["Password"].ToString(),
-                    IsEmailVerified = (bool)reader["IsEmailVerified"],
-                    EmailVerificationToken = reader["EmailVerificationToken"].ToString()
-                };
-            }
-
-            con.Close();
-            return user;
-        }
-
-        // Update user profile (Name, MobileNo, Password) using email
-        public bool UpdateUserProfile(HomeModel user)
-        {
-            string query = "UPDATE Users SET Name = @Name, MobileNo = @MobileNo, Password = @Password WHERE Email = @Email";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@Name", user.Name);
-            cmd.Parameters.AddWithValue("@MobileNo", user.MobileNo);
-            cmd.Parameters.AddWithValue("@Password", user.Password);
-            cmd.Parameters.AddWithValue("@Email", user.Email);
-
-            con.Open();
-            int result = cmd.ExecuteNonQuery();
-            con.Close();
-
-            return result > 0;
-        }
-
-
     }
 }
