@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HopeConnect.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 
 namespace HopeConnect.Controllers.Organization
@@ -8,7 +9,11 @@ namespace HopeConnect.Controllers.Organization
         public IActionResult AllPostApproval()
         {
             ViewData["ActivePage"] = "AllPostApproval";
-            return View("~/Views/Organization/AllPostApproval.cshtml");
+
+
+            PostModel postModel = new PostModel();
+            List<PostModel> posts = postModel.GetAllPosts();
+            return View("~/Views/Organization/AllPostApproval.cshtml", posts);
         }
     }
 }
