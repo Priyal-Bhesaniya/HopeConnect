@@ -25,65 +25,43 @@
             <h3>User Profile</h3>
 
             <form method="post">
-                <div class="input-group">
-                    <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="User Icon" class="icon">
-                    <input type="text" name="Name" placeholder="Name" required>
+                <!-- Display Organization Information -->
+                <div class="form-group">
+                    <label for="Name">Organization Name</label>
+                    <input type="text" name="Name" value="@Model.Name" class="form-control" />
                 </div>
 
-                <div class="input-group">
-                    <img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email Icon" class="icon">
-                    <input type="email" name="Email" placeholder="Email" required>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="text" name="Email" value="@Model.Email" class="form-control" readonly />
                 </div>
 
-                <div class="input-group">
-                    <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone Icon" class="icon">
-                    <input type="text" name="MobileNo" placeholder="Mobile No" required>
+                <div class="form-group">
+                    <label for="MobileNo">Mobile Number</label>
+                    <input type="text" name="MobileNo" value="@Model.MobileNo" class="form-control" />
                 </div>
 
-                <div class="input-group">
-                    <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" alt="Lock Icon" class="icon">
-                    <input type="password" name="Password" placeholder="Password" required>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" name="Password" class="form-control" />
                 </div>
 
-                <button type="submit" class="btn">Edit Profile</button>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
             </form>
+
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-info mt-3">
+                    @TempData["Message"]
+                </div>
+            }
         </div>
     </div>
+    </div>
 
-    <!-- User Posts Section -->
-    <section class="post-section">
-        <h2 style="margin-left : 500px">Your Posts</h2>
-        <div class="carousel">
-            <button class="prev" aria-label="Previous Slide">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <div class="carousel-content">
-                <div class="slide">
-                    <img src="~/Images/guest/child.png" alt="Child Rescue">
-                    <p>We rescue child beggars by reporting, tracking, and connecting them with welfare organizations for rehabilitation.</p>
-                </div>
-                <div class="slide">
-                    <img src="~/Images/guest/bird.png" alt="Bird Rescue">
-                    <p>Providing food and shelter to homeless children through our support programs.</p>
-                </div>
-                <div class="slide">
-                    <img src="~/Images/guest/child2.png" alt="Child Education">
-                    <p>Collaborating with NGOs to ensure child education and a better future.</p>
-                </div>
-            </div>
-            <button class="next" aria-label="Next Slide">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-        <div class="indicators">
-            <span class="dot active" data-index="0"></span>
-            <span class="dot" data-index="1"></span>
-            <span class="dot" data-index="2"></span>
-        </div>
-    </section>
+
 
     <script src="~/js/ScriptProfile.js" asp-append-version="true"></script>
 
 </body>
 </html>
-
