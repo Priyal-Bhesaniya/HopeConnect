@@ -1,10 +1,6 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
     Layout = null;
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,10 +8,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Signup</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/Login.css" />
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    @*  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> *@
 </head>
 <body>
     <div class="container">
@@ -30,50 +25,59 @@
                              width="150"
                              style="margin-right:1700px" />
                     </a>
-
                 </div>
             </nav>
         </header>
 
-
-
         <!-- Signup Form -->
-        <form asp-controller="User" asp-action="Register" method="post">
+        <form asp-controller="ORegister" asp-action="Register" method="post">
             <div class="auth-container">
                 <div class="auth-box1">
-                    <h2>Create an Oraganization</h2>
+                    <h2>Create an Organization</h2>
 
+                    <!-- Organization Name -->
                     <div class="input-group">
                         <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="User Icon" class="icon">
                         <input type="text" name="Name" placeholder="Name" required>
                     </div>
 
+                    <!-- Email -->
                     <div class="input-group">
                         <img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email Icon" class="icon">
                         <input type="email" name="Email" placeholder="Email" required>
                     </div>
 
+                    <!-- Mobile Number -->
                     <div class="input-group">
                         <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone Icon" class="icon">
-                        <input type="text" name="MobileNo" placeholder="Mobile No" required>
+                        <input type="text" name="MobileNo" placeholder="Mobile No" required pattern="^\d{10}$" title="Enter a 10-digit number">
                     </div>
 
+                    <!-- Password -->
                     <div class="input-group">
                         <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" alt="Lock Icon" class="icon">
-                        <input type="password" name="Password" placeholder="Password" required>
+                        <input type="password" name="Password" placeholder="Password" required title="At least 6 characters and include a number or symbol">
                     </div>
 
+                    <!-- Organization Type -->
                     <div class="input-group">
-                        <select required>
+                        <select name="Type" required class="form-select">
+                            <option value="">-- Select Type --</option>
                             <option value="Hospital">Hospital</option>
-                            <option value="orphanage">Orphanage</option>
-                            <option value="Animal Helpline">Animal Hepline</option>
+                            <option value="Orphanage">Orphanage</option>
+                            <option value="Animal Helpline">Animal Helpline</option>
+                            <option value="NGO">NGO</option>
                         </select>
                     </div>
 
+                    <!-- Submit Button -->
                     <button type="submit" class="btn">Create Organization</button>
 
-                    <p class="switch-auth">Have an organization? <a asp-controller="Home" asp-action="Login"><strong>Login</strong></a></p>
+                    <!-- Login Link -->
+                    <p class="switch-auth">
+                        Have an organization?
+                        <a asp-controller="ORegister" asp-action="OLogin"><strong>Login</strong></a>
+                    </p>
                 </div>
             </div>
         </form>
