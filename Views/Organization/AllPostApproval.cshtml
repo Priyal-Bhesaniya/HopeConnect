@@ -1,23 +1,25 @@
-﻿@{
+﻿@model List<HopeConnect.Models.PostModel>
+
+@{
     Layout = "~/Views/Shared/_OrganizationLayout.cshtml";
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Posts</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organization Posts</title>
+    <link rel="stylesheet" href="~/css/User.css" />
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="~/css/User.css">
     <style>
         .user-posts {
-            max-width: 600px; /* Increased width for better readability */
-            margin: 100px auto 0; /* More margin from the top */
-            margin-left : 370px;
+            max-width: 600px;
+            margin: 100px auto 0;
+            margin-left: 370px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            gap: 30px;
         }
 
         .post-card {
@@ -26,15 +28,13 @@
             font-size: 16px;
             background: #fff;
             border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow for card effect */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             border: 1px solid #ddd;
-       
-            
         }
 
             .post-card:hover {
-                transform: scale(1.05); /* Slight pop effect on hover */
+                transform: scale(1.02);
                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
             }
 
@@ -62,60 +62,69 @@
 
         .post-content img {
             display: block;
-            width: 100%; /* Adjusted for responsiveness */
-            max-width: 250px; /* Larger image */
+            width: 100%;
+            max-width: 250px;
             height: auto;
             margin: 10px auto;
             border-radius: 10px;
         }
 
         .post-footer {
-            text-align: center;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
             margin-top: 15px;
-            display:flex;
-            justify-content:space-around;
+            flex-wrap: wrap;
         }
 
-            .post-footer p {
+            .post-footer p, .post-footer a {
                 font-size: 14px;
-                color: #333;
                 font-weight: bold;
+                margin: 5px;
             }
 
-                .post-footer p a {
-                    color: #007bff;
-                    text-decoration: none;
-                    font-weight: bold;
-                }
+            .post-footer a {
+                color: #007bff;
+                text-decoration: none;
+            }
 
-                    .post-footer p a:hover {
-                        text-decoration: underline;
-                    }
+                .post-footer a:hover {
+                    text-decoration: underline;
+                }
     </style>
 </head>
 <body>
 
-    <!-- Middle Content (User Posts Section) -->
     <div class="min-vw-100">
-        <!-- User Post Section -->
         <div class="user-posts">
+            @if (Model != null && Model.Any())
+            {
+                foreach (var post in Model)
+                {
+                    <div class="post-card">
+                        <div class="post-header">
+                            <h5>@post.Name</h5>
+                        </div>
+                        <div class="post-content">
+                            <p>@post.ThoughtText</p>
+                            @if (!string.IsNullOrEmpty(post.PhotoPath))
+                            {
+                                <img src="@Url.Content(post.PhotoPath)" alt="Post Image" />
+                            }
+                        </div>
+                        <div class="post-footer">
+                            <p>📍 <a href="https://www.google.com/maps?q=@post.Latitude,@post.Longitude" target="_blank">@post.LocationName</a></p>
 
-            <!-- Another Post -->
-            <div class="post-card">
-                <div class="post-header">
-                    <h5>Madhvi Sanghani</h5>
-                </div>
-                <div class="post-content">
-                    <p>I found garbage floating in the water, making it look dirty and unsafe. It harms the environment and marine life, showing the need for proper waste disposal.</p>
-                    <img src="~/Images/guest/child.png" alt="Pollution Image">
-                </div>
-                <div class="post-footer">
-                    <p>Location </p>
-                    <p>+91 8200860989</p> 
-                        <a href="#">Accept</a>  
-                        <a href="#">Decline</a>
-                </div>
-            </div>
+                            <a href="#">✅ Accept</a>
+                            <a href="#">❌ Decline</a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No posts available.</p>
+            }
         </div>
     </div>
 
