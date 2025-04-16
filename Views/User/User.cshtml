@@ -105,9 +105,17 @@
                     </div>
                     <div class="post-footer">
                         <p class="switch-auth text-center flex align-items-center p-0 m-0">
-                            <strong>📍 @post.LocationName</strong>
+                            <strong>
+                                📍
+                                <a href="https://www.google.com/maps?q=@post.Latitude,@post.Longitude"
+                                   target="_blank"
+                                   style="text-decoration: none; color: inherit;">
+                                    @post.LocationName
+                                </a>
+                            </strong>
                         </p>
                     </div>
+
                 </div>
             </div>
         }
